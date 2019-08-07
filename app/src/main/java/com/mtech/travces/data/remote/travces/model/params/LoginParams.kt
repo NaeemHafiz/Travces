@@ -2,7 +2,7 @@ package com.mtech.travces.data.remote.travces.model.params
 
 class LoginParams {
 
-    var email: String = ""
+    var phone: String = ""
     var password: String = ""
 
 }

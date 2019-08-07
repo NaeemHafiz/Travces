@@ -38,6 +38,8 @@ const val ERROR_CODE_INVALID_CONFIRM_PASSWORD = -42
 const val ERROR_CODE_SOCIAL_LOGIN_FAILED = -43
 const val ERROR_CODE_EMPTY_NOTE_TITLE = -53
 const val ERROR_CODE_EMPTY_NOTE_DESCRIPTION = -54
+const val ERROR_CODE_EMPTY_ADDRESS = -89
+const val ERROR_CODE_EMPTY_CNIC = -90
 
 
 class ErrorResponse(var errorMessage: String, var errorCode: Int) : Serializable

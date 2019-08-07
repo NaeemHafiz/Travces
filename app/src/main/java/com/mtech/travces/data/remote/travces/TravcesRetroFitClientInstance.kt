@@ -21,7 +21,7 @@ class TravcesRetroFitClientInstance(ctx: Context) {
     var context = ctx
 
     // TODO : Replace this with app's original base url...
-    private val BASE_URL = "http://172.104.217.178/swapme/public/api/"
+    private val BASE_URL = "http://172.104.217.178/travces/public/api/"
 
     init {
         if (retrofit == null) {

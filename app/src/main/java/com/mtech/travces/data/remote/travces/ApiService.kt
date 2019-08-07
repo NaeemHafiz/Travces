@@ -5,7 +5,8 @@ import com.mtech.travces.data.remote.travces.model.params.RegistrationParams
 import com.mtech.travces.data.remote.travces.model.response.LoginResponse
 import com.mtech.travces.data.remote.travces.model.response.RegisterResponse
 import io.reactivex.Observable
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.POST
 
 interface ApiService {
 
@@ -14,5 +15,6 @@ interface ApiService {
 
     @POST("register")
     fun register(@Body body: RegistrationParams): Observable<RegisterResponse>
+
 
 }

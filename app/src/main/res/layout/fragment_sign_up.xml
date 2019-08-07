@@ -41,7 +41,7 @@
                             android:layout_height="55dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/ed_firstName"
+                                android:id="@+id/etFname"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="5dp"
@@ -58,7 +58,7 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_phoneNumber"
+                                android:id="@+id/etPhone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -76,7 +76,7 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_address"
+                                android:id="@+id/etAddress"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -93,7 +93,7 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_password"
+                                android:id="@+id/etPassword"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -129,7 +129,7 @@
                             android:layout_height="55dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_lastName"
+                                android:id="@+id/etLname"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -145,12 +145,12 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_cnic"
+                                android:id="@+id/etCnic"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="5dp"
                                 android:hint="@string/signup_cnic"
-                                android:inputType="number"
+                                android:inputType="text"
                                 android:textSize="@dimen/text_size_small"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -162,7 +162,7 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_email"
+                                android:id="@+id/etEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="5dp"
@@ -179,7 +179,7 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_confirmPassword"
+                                android:id="@+id/etCpassword"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="5dp"

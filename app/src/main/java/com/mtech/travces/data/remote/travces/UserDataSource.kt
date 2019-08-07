@@ -12,7 +12,7 @@ interface UserDataSource {
     }
 
     interface RegisterCallback {
-        fun onRegisterResponse(data: RegisterResponse)
+        fun onRegisterResponse(message: String)
         fun onPayloadError(error: ApiErrorResponse)
     }
 

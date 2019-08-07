@@ -54,26 +54,30 @@ class AppPreferences(context: Context) {
 
     fun setUser(loginData: LoginData) {
         setUserId(loginData.user.id)
-        setUserName(loginData.user.name)
-        setUserFirstName(loginData.user.first_name)
-        setUserLastName(loginData.user.last_name)
+        setUserFirstName(loginData.user.fname)
+        setUserLastName(loginData.user.lname)
         setUserPhone(loginData.user.phone)
         setUserEmail(loginData.user.email)
-        setUserProfileImage(loginData.user.profile_pic)
+        setUserType(loginData.user.type)
+        setUserPhoneVerified(loginData.user.phone_verified_at)
+        setUserEmailVerified(loginData.user.email_verified_at)
+        setUserCnic(loginData.user.cnic)
+        setUserAddress(loginData.user.address)
     }
 
     fun getUser(): LoginData {
         val loginData = LoginData()
 
-        loginData.user.name
-
-        loginData.user.name = getUserName().toString()
-        loginData.user.first_name = getUserFirstName().toString()
-        loginData.user.last_name = getUserLastName().toString()
+        loginData.user.fname = getUserFirstName().toString()
+        loginData.user.lname = getUserLastName().toString()
         loginData.user.phone = getUserPhone().toString()
         loginData.user.email = getUserEmail().toString()
+        loginData.user.address = getUserAddress().toString()
+        loginData.user.cnic = getUserCnic().toString()
+        loginData.user.type = getUserType().toString()
         loginData.user.id = getUserId()
-        loginData.user.profile_pic = getUserProfileImage()
+        loginData.user.email_verified_at = getUserEmailVerified().toString()
+        loginData.user.phone_verified_at = getUserPhoneVerified().toString()
 
         return loginData
     }
@@ -110,6 +114,7 @@ class AppPreferences(context: Context) {
     private fun getUserProfileImage(): String? {
         return pref.getString(KEY_USER_PROFILE_IMAGE, "")
     }
+
 
     fun setUserEmail(email: String) {
         with(pref.edit()) {
@@ -184,6 +189,51 @@ class AppPreferences(context: Context) {
         }
     }
 
+    private fun setUserAddress(address: String) {
+        with(pref.edit()) {
+            putString(KEY_USER_PHONE, address)
+            apply()
+        }
+
+    }
+
+    private fun getUserAddress(): String? {
+        return pref.getString(KEY_USER_ADDRESS, "")
+    }
+
+    private fun getUserCnic(): String? {
+        return pref.getString(KEY_USER_CNIC, "")
+    }
+
+    private fun getUserPhoneVerified(): String? {
+        return pref.getString(KEY_USER_VERIFIED_PHONE, "")
+    }
+
+    private fun getUserEmailVerified(): String? {
+        return pref.getString(KEY_USER_VERIFIED_EMAIL, "")
+    }
+
+    private fun setUserCnic(cnic: String) {
+        with(pref.edit()) {
+            putString(KEY_USER_PHONE, cnic)
+            apply()
+        }
+    }
+
+    private fun setUserEmailVerified(email_verified_at: String?) {
+        with(pref.edit()) {
+            putString(KEY_USER_PHONE, email_verified_at)
+            apply()
+        }
+    }
+
+    private fun setUserPhoneVerified(phone_verified_at: String?) {
+        with(pref.edit()) {
+            putString(KEY_USER_PHONE, phone_verified_at)
+            apply()
+        }
+    }
+
     fun getLocale(): String {
         return pref.getString(KEY_LOCALE, "en")!!
     }
@@ -213,6 +263,10 @@ class AppPreferences(context: Context) {
         const val KEY_USER_PROFILE_IMAGE = "profile_pic"
         const val KEY_USER_PHONE = "phone"
         const val KEY_USER_TYPE = "user_type"
+        const val KEY_USER_ADDRESS = "user_address"
+        const val KEY_USER_CNIC = "user_cnic"
+        const val KEY_USER_VERIFIED_EMAIL = "user_email_verified"
+        const val KEY_USER_VERIFIED_PHONE = "user_phone_verified"
 
         const val KEY_LOCALE = "locale"
         const val KEY_NOTIFICATIONS = "notifications"
