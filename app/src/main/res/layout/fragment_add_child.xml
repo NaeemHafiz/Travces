@@ -9,13 +9,6 @@
              android:orientation="vertical"
              android:padding="8dp"
              tools:context=".view.fragments.login.SignUpFragment">
-    <TextView android:layout_width="match_parent"
-              android:text="Update Profile"
-              android:gravity="center"
-              android:textStyle="bold"
-              android:textSize="40sp"
-              android:layout_marginTop="40dp"
-              android:layout_height="wrap_content"/>
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +41,7 @@
                             android:layout_height="55dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etfname"
+                                android:id="@+id/etFcname"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="5dp"
@@ -65,12 +58,29 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etphone"
+                                android:id="@+id/etPclocation"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:hint="@string/signup_phon"
-                                android:inputType="phone"
+                                android:hint="@string/signup_picklocation"
+                                android:inputType="text"
+                                android:textColorHint="@color/colorPrimary"
+                                android:textSize="@dimen/text_size_small"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="8dp">
+
+                        <TextView
+                                android:id="@+id/etPtime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:hint="@string/pick_time"
                                 android:textColorHint="@color/colorPrimary"
                                 android:textSize="@dimen/text_size_small"/>
 
@@ -83,32 +93,13 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etaddress"
+                                android:id="@+id/etIname"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:hint="@string/signup_address"
+                                android:hint="@string/institute_name"
                                 android:textColorHint="@color/colorPrimary"
                                 android:textSize="@dimen/text_size_small"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="55dp"
-                            android:layout_marginTop="8dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etpassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:hint="@string/signup_password"
-                                android:inputType="textPassword"
-                                android:textColorHint="@color/colorPrimary"
-                                android:textSize="@dimen/text_size_small"/>
-
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -136,7 +127,7 @@
                             android:layout_height="55dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etlname"
+                                android:id="@+id/etLcname"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -152,11 +143,11 @@
                             android:layout_marginTop="8dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etcnic"
+                                android:id="@+id/etDlocation"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="5dp"
-                                android:hint="@string/signup_cnic"
+                                android:hint="@string/drop_location"
                                 android:inputType="text"
                                 android:textSize="@dimen/text_size_small"/>
 
@@ -168,46 +159,27 @@
                             android:layout_height="55dp"
                             android:layout_marginTop="8dp">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etemail"
+                        <TextView
+                                android:id="@+id/etDtime"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="5dp"
-                                android:hint="@string/signup_email"
+                                android:hint="@string/drop_time"
                                 android:inputType="textEmailAddress"
                                 android:textSize="@dimen/text_size_small"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="55dp"
-                            android:layout_marginTop="8dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etcpassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"
-                                android:hint="@string/signup_confirm_password"
-                                android:inputType="textPassword"
-                                android:textSize="@dimen/text_size_small"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
-
             </LinearLayout>
-
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     app:cardCornerRadius="20dp">
-
                 <Button
-                        android:id="@+id/btnUpdateProfile"
+                        android:id="@+id/btnChildData"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_button_style"

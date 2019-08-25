@@ -13,7 +13,9 @@ import com.mtech.travces.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment() {
-    override fun getLayoutId(): Int = R.layout.fragment_login
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_login
+    }
 
     lateinit var userViewModel: UserViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

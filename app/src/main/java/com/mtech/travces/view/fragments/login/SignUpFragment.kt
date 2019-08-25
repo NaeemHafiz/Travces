@@ -1,15 +1,15 @@
 package com.mtech.travces.view.fragments.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mtech.travces.R
-import com.mtech.travces.data.remote.travces.model.params.RegistrationParams
+import com.mtech.travces.data.remote.travces.model.params.RegisterParams
 import com.mtech.travces.utils.extensions.*
 import com.mtech.travces.view.fragments.base.BaseFragment
 import com.mtech.travces.viewModel.UserViewModel
+import kotlinx.android.synthetic.main.fragment_add_child.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class SignUpFragment : BaseFragment() {
@@ -22,7 +22,7 @@ class SignUpFragment : BaseFragment() {
         attachViewModel()
         bSignUp.setOnClickListener {
 
-            val params = RegistrationParams()
+            val params = RegisterParams()
             params.fname = etFname.text.toString()
             params.lname = etLname.text.toString()
             params.email = etEmail.text.toString()

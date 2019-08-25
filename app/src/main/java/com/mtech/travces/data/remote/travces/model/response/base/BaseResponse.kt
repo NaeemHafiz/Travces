@@ -6,5 +6,4 @@ open class BaseResponse: Serializable {
 
     var status: Int = -1
     var message: String = ""
-
 }

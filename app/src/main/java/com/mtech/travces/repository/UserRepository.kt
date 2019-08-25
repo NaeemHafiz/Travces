@@ -2,20 +2,17 @@ package com.mtech.travces.repository
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.util.Log
 import com.mtech.travces.data.remote.travces.TravcesRetroFitClientInstance
 import com.mtech.travces.data.remote.travces.UserDataSource
-import com.mtech.travces.data.remote.travces.model.data.RegisterData
-import com.mtech.travces.data.remote.travces.model.params.LoginParams
-import com.mtech.travces.data.remote.travces.model.params.RegistrationParams
+import com.mtech.travces.data.remote.travces.model.params.*
 import com.mtech.travces.utils.ErrorUtils
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class UserRepository(var context: Application) {
 
-    private fun getApiService() = TravcesRetroFitClientInstance.getInstance(context)!!.getService()
+
+    fun getApiService() = TravcesRetroFitClientInstance.getInstance(context)!!.getService()
 
     @SuppressLint("CheckResult")
     fun login(phone: String, password: String, callback: UserDataSource.LoginCallback) {
@@ -33,7 +30,7 @@ class UserRepository(var context: Application) {
     }
 
     @SuppressLint("CheckResult")
-    fun register(params: RegistrationParams, callback: UserDataSource.RegisterCallback) {
+    fun register(params: RegisterParams, callback: UserDataSource.RegisterCallback) {
         getApiService().register(params).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ callback.onRegisterResponse(it.message) }
@@ -41,6 +38,57 @@ class UserRepository(var context: Application) {
                     callback.onPayloadError(ErrorUtils.parseError(it))
                 })
 
+    }
+
+    @SuppressLint("CheckResult")
+    fun updateProfile(userId: String, params: UpdateProfileParams, callback: UserDataSource.UpdateProfileCallback) {
+        getApiService().updateProfile(
+            userId,
+            params.fname,
+            params.lname,
+            params.email,
+            params.phone,
+            params.cnic,
+            params.address,
+            params.password,
+            params.password_confirmation
+        ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ callback.onUpdateResponse(it.message) }
+                , {
+                    callback.onPayloadError(ErrorUtils.parseError(it))
+                })
+    }
+
+    @SuppressLint("CheckResult")
+    fun getDriverList(parentId: String, callback: UserDataSource.getDriverListCallback) {
+        getApiService().getDriverList(parentId).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ callback.ongetDriverListResponse(it) }
+                , {
+                    callback.onPayloadError(ErrorUtils.parseError(it))
+                })
+    }
+
+
+    @SuppressLint("CheckResult")
+    fun addChild(params: ChildParams, callback: UserDataSource.addChildCallback) {
+        getApiService().addChild(params).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ callback.onaddChildResponse(it.message) }
+                , {
+                    callback.onPayloadError(ErrorUtils.parseError(it))
+                })
+    }
+
+    @SuppressLint("CheckResult")
+    fun forgotPassword(email: String, callback: UserDataSource.ForgotPasswordCallback) {
+        getApiService().forgotPassword(email).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ callback.onForgotPasswordResponse(it.message) }
+                , {
+                    callback.onPayloadError(ErrorUtils.parseError(it))
+                })
     }
 
 

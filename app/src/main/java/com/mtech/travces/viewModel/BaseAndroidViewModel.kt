@@ -17,7 +17,6 @@ open class BaseAndroidViewModel(context: Application) : AndroidViewModel(context
     val progressBar = MutableLiveData<OneShotEvent<Boolean>>()
     val validationResponse = MutableLiveData<OneShotEvent<ErrorResponse>>()
 
-
     protected fun getContext(): Context {
         return getApplication<Application>().applicationContext
     }

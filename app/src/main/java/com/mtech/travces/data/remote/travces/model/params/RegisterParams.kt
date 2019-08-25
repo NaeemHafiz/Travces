@@ -1,6 +1,6 @@
 package com.mtech.travces.data.remote.travces.model.params
 
-class RegistrationParams {
+class RegisterParams {
 
     var email: String = ""
     var password: String = ""

@@ -26,12 +26,19 @@
     <string name="logout">Logout</string>
 
     //Login Screen
-    <string name="login_email"> Enter Email</string>
-    <string name="login_create_account"><u>Create an account</u></string>
-    <string name="login_forget"><u>Forget?</u></string>
-    <string name="login_password"> Enter Password</string>
+    <string name="login_email">Enter Email</string>
+    <string name="login_create_account">
+        <u>Create an account</u>
+    </string>
+    <string name="login_forget">
+        <u>Forget?</u>
+    </string>
+    <string name="login_password">Enter Password</string>
     <string name="login_cell_number">Cell N0.</string>
-    <string name="about_us">Create a safe and efficient transport management. We Provide GPS tracking solutions to ensure student safety to and from their schools/colleges/universities.We provide real-time locationon the vehicle on your phone.</string>
+    <string name="about_us">Create a safe and efficient transport management. We Provide GPS tracking solutions to
+        ensure student safety to and from their schools/colleges/universities.We provide real-time locationon the
+        vehicle on your phone.
+    </string>
 
     //signup screen
     <string name="signup_first_name">First Name</string>
@@ -92,6 +99,11 @@
 
     //ProfieFragment
     <string name="tv_add_children">Add Children</string>
+    <string name="signup_picklocation">Pickup Location</string>
+    <string name="drop_location">Drop Location</string>
+    <string name="institute_name">Institute Name</string>
 
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pendingvalue">Pending</string>
 </resources>

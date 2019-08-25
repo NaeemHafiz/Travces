@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -13,7 +14,7 @@ import com.mtech.travces.view.activities.base.BaseActivity
 import com.mtech.travces.viewModel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_global_navigation.*
 
-class GlobalNavigationActivity  : BaseActivity() {
+class GlobalNavigationActivity : BaseActivity() {
     lateinit var navController: NavController
 
     lateinit var homeViewModel: HomeViewModel
@@ -23,6 +24,7 @@ class GlobalNavigationActivity  : BaseActivity() {
         // TODO : Clicking on notificaiton will trigger this method
         //          Use this for deep linking...
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_global_navigation)
@@ -34,13 +36,12 @@ class GlobalNavigationActivity  : BaseActivity() {
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         NavigationUI.setupWithNavController(nav_view, navController)
-
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-//            if (destination.label == getString(R.string.chat_fragment)) {
+            //            if (destination.label == getString(R.string.chat_fragment)) {
 //                rlToolbar.visibility = View.GONE
 //            } else {
-//                rlToolbar.visibility = View.VISIBLE
-//                tvTitle.text = destination.label
+            rlToolbar.visibility = View.VISIBLE
+            tvTitle.text = destination.label
 //            }
         }
 
@@ -50,12 +51,13 @@ class GlobalNavigationActivity  : BaseActivity() {
         }
     }
 
+
     private var flagDoubleBackToExitPressedOnce = false
 
     override fun onBackPressed() {
         when {
             drawer.isDrawerOpen(GravityCompat.START) -> drawer.closeDrawers()
-            navController.currentDestination!!.label!!.toString() != "Dashboard" -> super.onBackPressed()
+            navController.currentDestination!!.label!!.toString() != "Home" -> super.onBackPressed()
             else -> {
                 if (flagDoubleBackToExitPressedOnce) {
                     super.onBackPressed()

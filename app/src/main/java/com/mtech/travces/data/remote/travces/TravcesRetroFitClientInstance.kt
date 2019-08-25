@@ -112,7 +112,6 @@ class TravcesRetroFitClientInstance(ctx: Context) {
             val request = builder.build()
 
             //return chain.proceed(request)
-
             val response = chain.proceed(request)
             if (response.code() == 401) {
                 AppPreferences(context).logout()
@@ -121,5 +120,4 @@ class TravcesRetroFitClientInstance(ctx: Context) {
             return response
         }
     }
-
 }

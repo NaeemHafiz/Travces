@@ -40,6 +40,9 @@ const val ERROR_CODE_EMPTY_NOTE_TITLE = -53
 const val ERROR_CODE_EMPTY_NOTE_DESCRIPTION = -54
 const val ERROR_CODE_EMPTY_ADDRESS = -89
 const val ERROR_CODE_EMPTY_CNIC = -90
+const val ERROR_CODE_INVALID_PHONE = -99
+const val ERROR_CODE_PICKUP_LOCATION_NAME = -109
+const val ERROR_CODE_DROP_LOCATION_NAME = -110
 
 
 class ErrorResponse(var errorMessage: String, var errorCode: Int) : Serializable

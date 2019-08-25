@@ -6,7 +6,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.mtech.travces.R
 import com.mtech.travces.view.activities.base.BaseActivity
-import com.pusher.client.channel.User
 
 class LandingActivity : BaseActivity() {
 

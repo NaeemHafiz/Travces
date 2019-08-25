@@ -61,7 +61,6 @@ abstract class BaseFragment : Fragment() {
                 dialog.dismiss()
         }
     }
-
     fun deleteFile(filePath: String) {
         val file = File(filePath)
         if (file.exists()) {
@@ -75,12 +74,10 @@ abstract class BaseFragment : Fragment() {
         } else
             logError("File not found!")
     }
-
     fun moveToGlobalNavigationActivity() {
         startActivity(GlobalNavigationActivity.Companion.getStartIntent(activity as BaseActivity))
         (activity as BaseActivity).finish()
     }
-
     override fun onPause() {
         super.onPause()
         if (view != null) {
@@ -88,5 +85,4 @@ abstract class BaseFragment : Fragment() {
                 hideKeyboard(view!!)
         }
     }
-
 }

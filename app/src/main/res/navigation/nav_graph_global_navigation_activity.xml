@@ -4,6 +4,29 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph_global_navigation_activity"
             app:startDestination="@id/homeFragment">
 
-    <fragment android:id="@+id/homeFragment" android:name="com.mtech.travces.view.fragments.dashboard.HomeFragment"
-              android:label="fragment_home" tools:layout="@layout/fragment_home"/>
+    <fragment android:id="@+id/homeFragment"
+              android:name="com.mtech.travces.view.fragments.dashboard.HomeFragment"
+              android:label="Home"
+              tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_homeFragment_to_myProfileFragment"
+                app:destination="@id/myProfileFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/updateProfileFragment"
+              android:name="com.mtech.travces.view.fragments.login.UpdateProfileFragment"
+              tools:layout="@layout/fragment_update_profile"
+              android:label="Update Profile"/>
+
+    <fragment android:id="@+id/addChildFragment"
+              tools:layout="@layout/fragment_add_child"
+              android:name="com.mtech.travces.view.fragments.dashboard.AddChildFragment"
+              android:label="Add Child"/>
+
+    <fragment android:id="@+id/myProfileFragment"
+              android:name="com.mtech.travces.view.fragments.dashboard.MyProfileFragment"
+              android:label="My Profile"
+              tools:layout="@layout/fragment_my_profile">
+        <action android:id="@+id/action_myProfileFragment_to_addChildFragment" app:destination="@id/addChildFragment"/>
+    </fragment>
+
 </navigation>
