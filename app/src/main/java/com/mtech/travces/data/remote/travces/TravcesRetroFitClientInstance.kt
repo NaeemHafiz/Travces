@@ -21,7 +21,9 @@ class TravcesRetroFitClientInstance(ctx: Context) {
     var context = ctx
 
     // TODO : Replace this with app's original base url...
-    private val BASE_URL = "http://172.104.217.178/travces/public/api/"
+    private val PROD_BASE_URL = "http://172.104.217.178/travces/public/api/"
+    private val DEV_BASE_URL = "http://192.168.10.7:8080/travces/public/api/"
+    private val BASE_URL = DEV_BASE_URL
 
     init {
         if (retrofit == null) {
@@ -98,7 +100,10 @@ class TravcesRetroFitClientInstance(ctx: Context) {
         }
     }
 
-    class AuthenticationInterceptor internal constructor(private val authToken: String, private val context: Context) :
+    class AuthenticationInterceptor internal constructor(
+        private val authToken: String,
+        private val context: Context
+    ) :
         Interceptor {
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): Response {

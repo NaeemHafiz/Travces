@@ -8,38 +8,74 @@ import android.widget.TimePicker
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mtech.travces.R
+import com.mtech.travces.data.remote.travces.model.data.GetChildrenData
 import com.mtech.travces.data.remote.travces.model.params.ChildParams
+import com.mtech.travces.data.remote.travces.model.params.UpdateChildParams
 import com.mtech.travces.utils.extensions.*
 import com.mtech.travces.view.dialogs.CustomTimePickerDialog
 import com.mtech.travces.view.fragments.base.BaseFragment
+import com.mtech.travces.view.fragments.dashboard.AddChildFragment.Companion.KEY_CHILD
 import com.mtech.travces.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_add_child.*
-import kotlinx.android.synthetic.main.fragment_sign_up.*
 import java.util.*
 
 @Suppress("IMPLICIT_CAST_TO_ANY")
 class AddChildFragment : BaseFragment(), TimePickerDialog.OnTimeSetListener {
 
     override fun getLayoutId(): Int = R.layout.fragment_add_child
+    lateinit var childObj: GetChildrenData
     lateinit var userViewModel: UserViewModel
     var forStartTime = false
 
+    private fun getMyArguments() {
+
+        val args = arguments
+        if (args != null) {
+            if (args.containsKey(KEY_CHILD)) childObj =
+                (args.getSerializable(KEY_CHILD)!! as GetChildrenData)
+
+            etFcname.setText(childObj.fname)
+            etLcname.setText(childObj.lname)
+            etPclocation.setText(childObj.pickup_location)
+            etDlocation.setText(childObj.drop_location)
+            etPtime.setText(childObj.pickup_time)
+            etDtime.setText(childObj.drop_time)
+            etIname.setText(childObj.institute_name)
+//            etDescription.setText(noteItem.description)
+            bAdd.text = "Update"
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        getMyArguments()
         attachViewModel()
-        btnChildData.setOnClickListener {
-            val params = ChildParams()
-            params.fname = etFcname.text.toString()
-            params.lname = etLcname.text.toString()
-            params.pickup_location = etPclocation.text.toString()
-            params.drop_location = etDlocation.text.toString()
-            params.pickup_time = etPtime.text.toString()
-            params.drop_time = etDtime.text.toString()
-            params.institute_name = etIname.text.toString()
-            params.parent_id = appPreferences.getUser().user.id.toString()
-            userViewModel.addChild(params)
+        bAdd.setOnClickListener {
+            if (bAdd.text.toString().equals("Add")) {
+                val params = ChildParams()
+                params.fname = etFcname.text.toString()
+                params.lname = etLcname.text.toString()
+                params.pickup_location = etPclocation.text.toString()
+                params.drop_location = etDlocation.text.toString()
+                params.pickup_time = etPtime.text.toString()
+                params.drop_time = etDtime.text.toString()
+                params.institute_name = etIname.text.toString()
+                params.parent_id = appPreferences.getUser().user.id.toString()
+                userViewModel.addChild(params)
+            } else {
+                val params = UpdateChildParams()
+                params.fname = etFcname.text.toString()
+                params.lname = etLcname.text.toString()
+                params.pickup_location = etPclocation.text.toString()
+                params.drop_location = etDlocation.text.toString()
+                params.pickup_time = etPtime.text.toString()
+                params.drop_time = etDtime.text.toString()
+                params.institute_name = etIname.text.toString()
+                params.child_id = childObj.id
+                userViewModel.updateChildProfile(params)
+            }
         }
+
         etPtime.setOnClickListener {
             forStartTime = true
             showPickDropTimePicker()
@@ -48,6 +84,7 @@ class AddChildFragment : BaseFragment(), TimePickerDialog.OnTimeSetListener {
             forStartTime = false
             showPickDropTimePicker()
         }
+
 //        llPickTime.setOnClickListener {
 //            forStartTime = true
 //            showPickupTimePicker()
@@ -138,6 +175,13 @@ class AddChildFragment : BaseFragment(), TimePickerDialog.OnTimeSetListener {
                 }
             })
         }
+    }
+
+    object Companion {
+        @JvmStatic
+        val TAG: String = AddChildFragment::class.java.simpleName
+        @JvmStatic
+        val KEY_CHILD = "child"
     }
 
 }

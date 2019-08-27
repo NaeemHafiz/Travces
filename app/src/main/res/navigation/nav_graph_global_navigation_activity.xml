@@ -10,6 +10,27 @@
               tools:layout="@layout/fragment_home">
         <action android:id="@+id/action_homeFragment_to_myProfileFragment"
                 app:destination="@id/myProfileFragment"/>
+        <action
+                android:id="@+id/action_homeFragment_to_settingsFragment"
+                app:destination="@id/settingsFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_paymentFragment"
+                app:destination="@id/paymentFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_contactSupportTeamFragment"
+                app:destination="@id/contactSupportTeamFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_contactSupportTeamFragment2"
+                app:destination="@id/contactSupportTeamFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_leaveStatusFragment"
+                app:destination="@id/leaveStatusFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_notificationFragment"
+                app:destination="@id/notificationFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_driverMapFragment"
+                app:destination="@id/driverMapFragment" />
     </fragment>
 
     <fragment android:id="@+id/updateProfileFragment"
@@ -27,6 +48,36 @@
               android:label="My Profile"
               tools:layout="@layout/fragment_my_profile">
         <action android:id="@+id/action_myProfileFragment_to_addChildFragment" app:destination="@id/addChildFragment"/>
+        <action android:id="@+id/action_myProfileFragment_to_viewChildrenFragment" app:destination="@id/viewChildrenFragment"/>
     </fragment>
+    <fragment android:id="@+id/viewChildrenFragment" android:name="com.mtech.travces.view.fragments.dashboard.ViewChildrenFragment"
+              android:label="View Children" tools:layout="@layout/fragment_view_children">
+        <action android:id="@+id/action_viewChildrenFragment_to_addChildFragment"
+                app:destination="@id/addChildFragment"/>
+    </fragment>
+    <fragment android:id="@+id/notificationFragment" android:name="com.mtech.travces.view.fragments.dashboard.NotificationFragment"
+              android:label="Notifications" tools:layout="@layout/fragment_notification"/>
+    <fragment android:id="@+id/paymentFragment" android:name="com.mtech.travces.view.fragments.dashboard.PaymentFragment"
+              android:label="Payment" tools:layout="@layout/fragment_payment"/>
+    <fragment
+            android:id="@+id/leaveStatusFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.LeaveStatusFragment"
+            android:label="Leave Status"
+            tools:layout="@layout/fragment_leave_status" />
+    <fragment
+            android:id="@+id/contactSupportTeamFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.ContactSupportTeamFragment"
+            android:label="Contact Support Team"
+            tools:layout="@layout/fragment_contact_support_team" />
+    <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.SettingsFragment"
+            android:label="Settings"
+            tools:layout="@layout/fragment_settings" />
+    <fragment
+            android:id="@+id/driverMapFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.DriverMapFragment"
+            android:label="fragment_driver_map"
+            tools:layout="@layout/fragment_driver_map" />
 
 </navigation>

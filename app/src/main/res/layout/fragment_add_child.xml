@@ -179,11 +179,11 @@
                     android:layout_weight="1"
                     app:cardCornerRadius="20dp">
                 <Button
-                        android:id="@+id/btnChildData"
+                        android:id="@+id/bAdd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_button_style"
-                        android:text="@string/btn_signup"
+                        android:text="Add"
                         android:textColor="#fff"/>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

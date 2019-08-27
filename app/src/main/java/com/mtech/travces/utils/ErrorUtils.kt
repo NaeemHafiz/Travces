@@ -23,22 +23,26 @@ object ErrorUtils {
     }
 
     fun parseError(t: Throwable): ApiErrorResponse {
-        var message = "API ERROR RESPONSE"
+        var message = ""
         if (t is HttpException) {
             val errorJsonString = t.response()
                 .errorBody()?.string()
-            message = JsonParser().parse(errorJsonString)
-                .asJsonObject["message"]
-                .asString
+            if (JsonParser().parse(errorJsonString)
+                    .asJsonObject["Message"] != null
+            ) {
+                message = JsonParser().parse(errorJsonString)
+                    .asJsonObject["Message"]
+                    .asString
+            }
         } else {
-            message = t.message?:message
+            message = t.message ?: message
         }
 
         return try {
-            ApiErrorResponse(0, message!!, "")
+            ApiErrorResponse(0, message, "")
         } catch (ex: Exception) {
             ex.printStackTrace()
-            ApiErrorResponse(0, message!!, "")
+            ApiErrorResponse(0, message, "")
         }
     }
 }

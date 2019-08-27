@@ -50,8 +50,17 @@
                 android:padding="20dp"
                 android:text="@string/tv_add_children"
                 android:textSize="@dimen/text_size_small"/>
-
+        <TextView
+                android:id="@+id/tvChildView"
+                android:layout_below="@+id/tvAddChild"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:clickable="true"
+                android:layout_marginTop="40dp"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="@string/tv_view_children"
+                android:textSize="@dimen/text_size_small"/>
     </RelativeLayout>
-
-
 </LinearLayout>

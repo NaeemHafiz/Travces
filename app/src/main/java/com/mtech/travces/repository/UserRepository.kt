@@ -41,7 +41,34 @@ class UserRepository(var context: Application) {
     }
 
     @SuppressLint("CheckResult")
-    fun updateProfile(userId: String, params: UpdateProfileParams, callback: UserDataSource.UpdateProfileCallback) {
+    fun updateChildProfile(
+        params: UpdateChildParams,
+        callback: UserDataSource.updateChildCallback
+    ) {
+        getApiService().updateChildProfile(
+            params.fname,
+            params.lname,
+            params.pickup_location,
+            params.drop_location,
+            params.pickup_time,
+            params.drop_time,
+            params.institute_name,
+            params.child_id
+        ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ callback.onupdateChildResponse(it.message) }
+                , {
+                    callback.onPayloadError(ErrorUtils.parseError(it))
+                })
+
+    }
+
+    @SuppressLint("CheckResult")
+    fun updateProfile(
+        userId: String,
+        params: UpdateProfileParams,
+        callback: UserDataSource.UpdateProfileCallback
+    ) {
         getApiService().updateProfile(
             userId,
             params.fname,
@@ -61,10 +88,10 @@ class UserRepository(var context: Application) {
     }
 
     @SuppressLint("CheckResult")
-    fun getDriverList(parentId: String, callback: UserDataSource.getDriverListCallback) {
-        getApiService().getDriverList(parentId).subscribeOn(Schedulers.io())
+    fun getChildrenList(parentId: String, callback: UserDataSource.getChildrenListCallback) {
+        getApiService().getChildrenList(parentId).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ callback.ongetDriverListResponse(it) }
+            .subscribe({ callback.ongetChildListResponse(it) }
                 , {
                     callback.onPayloadError(ErrorUtils.parseError(it))
                 })
@@ -91,5 +118,13 @@ class UserRepository(var context: Application) {
                 })
     }
 
-
+    @SuppressLint("CheckResult")
+    fun getDriverList(parentId: String, callback: UserDataSource.getDriverListCallback) {
+        getApiService().getDriverList(parentId).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ callback.ongetDriverListResponse(it) }
+                , {
+                    callback.onPayloadError(ErrorUtils.parseError(it))
+                })
+    }
 }

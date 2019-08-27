@@ -45,5 +45,21 @@ interface ApiService {
     fun addChild(@Body body: ChildParams): Observable<ChildResponse>
 
     @GET("children")
+    fun getChildrenList(@Query("parent_id") parent_id: String): Observable<GetChildrenResponse>
+
+    @GET("child_rides")
     fun getDriverList(@Query("parent_id") parent_id: String): Observable<GetDriverResponse>
+
+    @FormUrlEncoded
+    @PUT("update_child")
+    fun updateChildProfile(
+        @Field("fname") fname: String,
+        @Field("lname") lname: String,
+        @Field("pickup_location") pickup_location: String,
+        @Field("drop_location") drop_location: String,
+        @Field("pickup_time") pickup_time: String,
+        @Field("drop_time") drop_time: String,
+        @Field("institute_name") institute_name: String,
+        @Field("child_id") child_id: String
+    ): Observable<UpdateChildResponse>
 }
