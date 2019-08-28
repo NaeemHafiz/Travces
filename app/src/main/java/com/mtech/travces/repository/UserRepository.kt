@@ -30,6 +30,22 @@ class UserRepository(var context: Application) {
     }
 
     @SuppressLint("CheckResult")
+    fun sendCoordinates(params: PusherParams, callback: UserDataSource.sendCoordinatesCallback) {
+        getApiService().sendCoordinates(params.latitude, params.longitude)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                callback.onsendCoodinatesResponse(it.message)
+            }
+                , {
+                    callback.onPayloadError(ErrorUtils.parseError(it))
+                })
+
+        getApiService().sendCoordinates(params.latitude, params.longitude)
+
+    }
+
+    @SuppressLint("CheckResult")
     fun register(params: RegisterParams, callback: UserDataSource.RegisterCallback) {
         getApiService().register(params).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

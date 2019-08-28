@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.mtech.travces.data.remote.base.ApiErrorResponse
 import com.mtech.travces.data.remote.travces.UserDataSource
 import com.mtech.travces.data.remote.travces.model.data.LoginData
-import com.mtech.travces.data.remote.travces.model.params.ChildParams
-import com.mtech.travces.data.remote.travces.model.params.RegisterParams
-import com.mtech.travces.data.remote.travces.model.params.UpdateChildParams
-import com.mtech.travces.data.remote.travces.model.params.UpdateProfileParams
+import com.mtech.travces.data.remote.travces.model.params.*
 import com.mtech.travces.data.remote.travces.model.response.GetChildrenResponse
 import com.mtech.travces.data.remote.travces.model.response.GetDriverResponse
 import com.mtech.travces.repository.UserRepository
@@ -25,6 +22,26 @@ class UserViewModel(context: Application) : BaseAndroidViewModel(context) {
     var forgotPasswordResponse: MutableLiveData<OneShotEvent<String>> = MutableLiveData()
     var getDriverListResponse: MutableLiveData<OneShotEvent<GetDriverResponse>> = MutableLiveData()
     var updateChildResponse: MutableLiveData<OneShotEvent<String>> = MutableLiveData()
+    var sendCoordinatesResponse: MutableLiveData<OneShotEvent<String>> = MutableLiveData()
+
+    fun sendCoordinates(params: PusherParams) {
+        showProgressBar(true)
+        var canProceed = true
+        if (!canProceed) return
+        userRepository.sendCoordinates(params, object : UserDataSource.sendCoordinatesCallback {
+            override fun onsendCoodinatesResponse(message: String) {
+                showProgressBar(false)
+                sendCoordinatesResponse.value = OneShotEvent(message)
+            }
+
+            override fun onPayloadError(error: ApiErrorResponse) {
+                showProgressBar(false)
+                showSnackbarMessage(error.message)
+            }
+
+        })
+
+    }
 
     fun updateChildProfile(params: UpdateChildParams) {
         showProgressBar(true)

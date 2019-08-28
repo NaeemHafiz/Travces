@@ -51,6 +51,10 @@ interface ApiService {
     fun getDriverList(@Query("parent_id") parent_id: String): Observable<GetDriverResponse>
 
     @FormUrlEncoded
+    @POST("/simulate")
+    fun sendCoordinates(@Field("latitude") latitude: String, @Field("longitude") longitude: String): Observable<PusherParamsResponse>
+
+    @FormUrlEncoded
     @PUT("update_child")
     fun updateChildProfile(
         @Field("fname") fname: String,

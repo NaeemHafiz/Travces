@@ -47,4 +47,10 @@ interface UserDataSource {
         fun onupdateChildResponse(message: String)
         fun onPayloadError(error: ApiErrorResponse)
     }
+
+    interface sendCoordinatesCallback {
+        fun onsendCoodinatesResponse(message: String)
+        fun onPayloadError(error: ApiErrorResponse)
+
+    }
 }
