@@ -1,18 +1,12 @@
 package com.mtech.travces.view.fragments.dashboard
 
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.NonNull
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.mtech.travces.data.remote.travces.model.data.GetChildrenData
-import com.mtech.travces.utils.SwipeToDeleteCallback
 import com.mtech.travces.view.activities.GlobalNavigationActivity
 import com.mtech.travces.view.activities.base.BaseActivity
 import com.mtech.travces.view.adapters.ChildrenAdapter
@@ -33,7 +27,7 @@ class ViewChildrenFragment : BaseFragment(), ChildrenAdapter.Callback {
         super.onViewCreated(view, savedInstanceState)
         attachViewModel()
         userViewModel.getChildrenList(appPreferences.getUser().user.id.toString())
-        initNotesAdapter()
+        initChildrenAdapter()
     }
 
 
@@ -64,7 +58,7 @@ class ViewChildrenFragment : BaseFragment(), ChildrenAdapter.Callback {
         }
     }
 
-    private fun initNotesAdapter() {
+    private fun initChildrenAdapter() {
         childrenAdapter = ChildrenAdapter(context as BaseActivity, childrenList, this)
         rvChild.layoutManager = LinearLayoutManager(context)
         rvChild.adapter = childrenAdapter
@@ -73,7 +67,6 @@ class ViewChildrenFragment : BaseFragment(), ChildrenAdapter.Callback {
     override fun onItemClicked(pos: Int) {
         val args = Bundle()
         args.putSerializable(AddChildFragment.Companion.KEY_CHILD, childrenList[pos])
-        args.putBoolean("layout", true)
         (activity as GlobalNavigationActivity).navController.navigate(
             com.mtech.travces.R.id.action_viewChildrenFragment_to_addChildFragment,
             args

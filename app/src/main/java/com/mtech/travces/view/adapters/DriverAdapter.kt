@@ -1,5 +1,6 @@
 package com.mtecsoft.swapme.view.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -44,13 +45,15 @@ class DriverAdapter(
         var cvItem = itemView.findViewById(R.id.itemclik) as CardView
 
         //
+        @SuppressLint("SetTextI18n")
         fun bind(pos: Int) {
-            tvDriverName.text = driversList[0].children[0].fname + driversList[0].children[0].lname
-            tvPickTime.text = driversList[0].children[0].pickup_time
-            tvDropTime.text = driversList[0].children[0].drop_time
-            pickup_location.text = driversList[0].children[0].pickup_location
-            drop_location.text = driversList[0].children[0].drop_location
-            institute_name.text = driversList[0].children[0].institute_name
+            val driver: DriverData = driversList[pos]
+            tvDriverName.text = "${driver.driver.fname} ${driver.driver.lname}"
+            tvPickTime.text = driver.children[0].pickup_time
+            tvDropTime.text = driver.children[0].drop_time
+            pickup_location.text = driver.children[0].pickup_location
+            drop_location.text = driver.children[0].drop_location
+            institute_name.text = driver.children[0].institute_name
             tvDriverStatus.text = context.getString(R.string.pendingvalue)
             initClickListeners()
         }

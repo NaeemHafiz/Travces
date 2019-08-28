@@ -32,7 +32,7 @@ class HomeFragment : BaseFragment(), DriverAdapter.Callback {
         super.onViewCreated(view, savedInstanceState)
         attachViewModel()
         userViewModel.getDriverList(appPreferences.getUser().user.id.toString())
-        initNotesAdapter()
+        initDriverAdapter()
     }
 
     private fun attachViewModel() {
@@ -55,7 +55,6 @@ class HomeFragment : BaseFragment(), DriverAdapter.Callback {
                     for (temp in show.data.iterator()) {
 
                         driverList.add(temp)
-                        Log.e("Driver data",driverList[0].children[0].institute_name)
                     }
                 }
                 driverAdapter.notifyDataSetChanged()
@@ -63,17 +62,18 @@ class HomeFragment : BaseFragment(), DriverAdapter.Callback {
         }
     }
 
-    private fun initNotesAdapter() {
+    private fun initDriverAdapter() {
         driverAdapter = DriverAdapter(context as BaseActivity, driverList, this)
         rvDrivers.layoutManager = LinearLayoutManager(context)
         rvDrivers.adapter = driverAdapter
     }
 
     override fun onItemClicked(pos: Int) {
-//        val args = Bundle()
-//        args.putSerializable("data", driverList[pos])
+        val args = Bundle()
+        args.putSerializable(DriverMapFragment.Companion.KEY_DRIVER, driverList[pos])
         (activity as GlobalNavigationActivity).navController.navigate(
-            R.id.action_homeFragment_to_driverMapFragment
+            R.id.action_homeFragment_to_driverMapFragment,
+            args
         )
     }
 

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph_global_navigation_activity"
-            app:startDestination="@id/homeFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph_global_navigation_activity"
+        app:startDestination="@id/homeFragment">
 
-    <fragment android:id="@+id/homeFragment"
-              android:name="com.mtech.travces.view.fragments.dashboard.HomeFragment"
-              android:label="Home"
-              tools:layout="@layout/fragment_home">
-        <action android:id="@+id/action_homeFragment_to_myProfileFragment"
-                app:destination="@id/myProfileFragment"/>
+    <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.HomeFragment"
+            android:label="Home"
+            tools:layout="@layout/fragment_home">
+        <action
+                android:id="@+id/action_homeFragment_to_myProfileFragment"
+                app:destination="@id/myProfileFragment" />
         <action
                 android:id="@+id/action_homeFragment_to_settingsFragment"
                 app:destination="@id/settingsFragment" />
@@ -33,32 +36,49 @@
                 app:destination="@id/driverMapFragment" />
     </fragment>
 
-    <fragment android:id="@+id/updateProfileFragment"
-              android:name="com.mtech.travces.view.fragments.login.UpdateProfileFragment"
-              tools:layout="@layout/fragment_update_profile"
-              android:label="Update Profile"/>
+    <fragment
+            android:id="@+id/updateProfileFragment"
+            android:name="com.mtech.travces.view.fragments.login.UpdateProfileFragment"
+            android:label="Update Profile"
+            tools:layout="@layout/fragment_update_profile" />
 
-    <fragment android:id="@+id/addChildFragment"
-              tools:layout="@layout/fragment_add_child"
-              android:name="com.mtech.travces.view.fragments.dashboard.AddChildFragment"
-              android:label="Add Child"/>
+    <fragment
+            android:id="@+id/addChildFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.AddChildFragment"
+            android:label="Add Child"
+            tools:layout="@layout/fragment_add_child" />
 
-    <fragment android:id="@+id/myProfileFragment"
-              android:name="com.mtech.travces.view.fragments.dashboard.MyProfileFragment"
-              android:label="My Profile"
-              tools:layout="@layout/fragment_my_profile">
-        <action android:id="@+id/action_myProfileFragment_to_addChildFragment" app:destination="@id/addChildFragment"/>
-        <action android:id="@+id/action_myProfileFragment_to_viewChildrenFragment" app:destination="@id/viewChildrenFragment"/>
+    <fragment
+            android:id="@+id/myProfileFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.MyProfileFragment"
+            android:label="My Profile"
+            tools:layout="@layout/fragment_my_profile">
+        <action
+                android:id="@+id/action_myProfileFragment_to_addChildFragment"
+                app:destination="@id/addChildFragment" />
+        <action
+                android:id="@+id/action_myProfileFragment_to_viewChildrenFragment"
+                app:destination="@id/viewChildrenFragment" />
     </fragment>
-    <fragment android:id="@+id/viewChildrenFragment" android:name="com.mtech.travces.view.fragments.dashboard.ViewChildrenFragment"
-              android:label="View Children" tools:layout="@layout/fragment_view_children">
-        <action android:id="@+id/action_viewChildrenFragment_to_addChildFragment"
-                app:destination="@id/addChildFragment"/>
+    <fragment
+            android:id="@+id/viewChildrenFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.ViewChildrenFragment"
+            android:label="View Children"
+            tools:layout="@layout/fragment_view_children">
+        <action
+                android:id="@+id/action_viewChildrenFragment_to_addChildFragment"
+                app:destination="@id/addChildFragment" />
     </fragment>
-    <fragment android:id="@+id/notificationFragment" android:name="com.mtech.travces.view.fragments.dashboard.NotificationFragment"
-              android:label="Notifications" tools:layout="@layout/fragment_notification"/>
-    <fragment android:id="@+id/paymentFragment" android:name="com.mtech.travces.view.fragments.dashboard.PaymentFragment"
-              android:label="Payment" tools:layout="@layout/fragment_payment"/>
+    <fragment
+            android:id="@+id/notificationFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.NotificationFragment"
+            android:label="Notifications"
+            tools:layout="@layout/fragment_notification" />
+    <fragment
+            android:id="@+id/paymentFragment"
+            android:name="com.mtech.travces.view.fragments.dashboard.PaymentFragment"
+            android:label="Payment"
+            tools:layout="@layout/fragment_payment" />
     <fragment
             android:id="@+id/leaveStatusFragment"
             android:name="com.mtech.travces.view.fragments.dashboard.LeaveStatusFragment"
@@ -77,7 +97,7 @@
     <fragment
             android:id="@+id/driverMapFragment"
             android:name="com.mtech.travces.view.fragments.dashboard.DriverMapFragment"
-            android:label="fragment_driver_map"
+            android:label="Driver Map"
             tools:layout="@layout/fragment_driver_map" />
 
 </navigation>
