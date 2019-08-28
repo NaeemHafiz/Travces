@@ -37,7 +37,7 @@ class MyPusherManager private constructor() {
         val options = PusherOptions()
         options.setCluster("ap2")
         options.authorizer = authorizer
-        pusher = Pusher("fc3dca6a27b782c9ea27", options)
+        pusher = Pusher("8332aaa9ad861498c559", options)
     }
 
     fun connect() {
