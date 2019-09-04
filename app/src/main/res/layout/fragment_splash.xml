@@ -72,15 +72,15 @@
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp">
 
-            <Button
-                    android:id="@+id/id_join_fb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/blue"
-                    android:drawableLeft="@drawable/ic_facebook"
-                    android:text="@string/btn_title_facebook"
-                    android:textColor="@color/ef_white"/>
+            <!--<Button-->
+            <!--android:id="@+id/id_join_fb"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/blue"-->
+            <!--android:drawableLeft="@drawable/ic_facebook"-->
+            <!--android:text="@string/btn_title_facebook"-->
+            <!--android:textColor="@color/ef_white"/>-->
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -91,14 +91,14 @@
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp">
 
-            <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_pressed_state"
-                    android:drawableLeft="@drawable/ic_gmail"
-                    android:padding="3dp"
-                    android:text="@string/btn_title_gmail"/>
+            <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/btn_pressed_state"-->
+            <!--android:drawableLeft="@drawable/ic_gmail"-->
+            <!--android:padding="3dp"-->
+            <!--android:text="@string/btn_title_gmail"/>-->
 
         </androidx.cardview.widget.CardView>
     </LinearLayout>

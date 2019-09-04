@@ -5,5 +5,5 @@ import com.mtech.travces.data.remote.travces.model.response.base.BaseResponse
 import java.io.Serializable
 
 class ChildResponse(
-    val data: DriverData
+    val data: DriverData?
 ) : BaseResponse(), Serializable

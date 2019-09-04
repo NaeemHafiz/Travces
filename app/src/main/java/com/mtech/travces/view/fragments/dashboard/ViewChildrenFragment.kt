@@ -47,9 +47,9 @@ class ViewChildrenFragment : BaseFragment(), ChildrenAdapter.Callback {
             getChildrenListResponse.observe(viewLifecycleOwner, Observer {
 
                 val show = it?.getContentIfNotHandled()
-                if (show?.Data != null) {
+                if (show?.data != null) {
                     childrenList.clear()
-                    for (temp in show.Data.iterator()) {
+                    for (temp in show.data.iterator()) {
                         childrenList.add(temp)
                     }
                 }

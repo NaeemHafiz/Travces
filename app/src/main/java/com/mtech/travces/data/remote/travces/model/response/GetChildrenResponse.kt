@@ -5,5 +5,5 @@ import com.mtech.travces.data.remote.travces.model.response.base.BaseResponse
 import java.io.Serializable
 
 class GetChildrenResponse(
-    val Data: List<GetChildrenData>?
+    val data: List<GetChildrenData>?
 ) : BaseResponse(), Serializable

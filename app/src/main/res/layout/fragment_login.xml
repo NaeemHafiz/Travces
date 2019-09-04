@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/ef_white"
-                    android:drawableLeft="@drawable/ic_call_black_24dp"
+                    android:drawableLeft="@drawable/ic_call"
                     android:drawablePadding="10dp"
                     android:hint="@string/signup_phon"
                     android:inputType="textEmailAddress"
@@ -60,6 +60,7 @@
                     android:inputType="textPassword"
                     android:selectAllOnFocus="true"
                     android:text="abcdefgh"
+                    android:textColor="@color/ef_white"
                     android:textColorHint="@color/colorLightWhite"
                     android:textSize="@dimen/text_size_small"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +89,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/btn_title_forgot_your_password"
-                        android:textColor="@android:color/holo_blue_light" />
+                        android:textColor="#fff"
+                        android:textSize="14sp" />
 
                 <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
@@ -102,7 +104,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_button_style"
-                            android:text="@string/btn_login_title" />
+                            android:text="@string/btn_login_title"
+                            android:textColor="#fff" />
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>

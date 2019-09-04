@@ -25,7 +25,9 @@ class LoginFragment : BaseFragment() {
             userViewModel.login(etPhone.text.toString(), etPassword.text.toString())
         }
 
-        tvForgotPassword.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_forgotPasswordFragment))
+        tvForgotPassword.setOnClickListener {
+            Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
     }
 
     private fun attachViewModel() {

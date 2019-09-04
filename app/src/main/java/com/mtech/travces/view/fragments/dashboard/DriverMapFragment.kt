@@ -43,12 +43,12 @@ class DriverMapFragment : BaseFragment(), OnMapReadyCallback {
     lateinit var driverObj: DriverData
     var lat: String = ""
     var long: String = ""
-    private lateinit var cameraPosition: CameraPosition
-    private lateinit var markerOptions: MarkerOptions
-    private lateinit var marker: Marker
-    lateinit var pusher: Pusher
-    var defaultLongitude = -122.088426
-    var defaultLatitude = 37.388064
+//    private lateinit var cameraPosition: CameraPosition
+//    private lateinit var markerOptions: MarkerOptions
+//    private lateinit var marker: Marker
+//    lateinit var pusher: Pusher
+//    var defaultLongitude = -122.088426
+//    var defaultLatitude = 37.388064
     private fun getMyArguments() {
 
         val args = arguments
@@ -63,13 +63,12 @@ class DriverMapFragment : BaseFragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        markerOptions = MarkerOptions()
         getMyArguments()
-        attachViewModel()
-        val params = PusherParams()
-        params.latitude = lat
-        params.longitude = long
-        userViewModel.sendCoordinates(params)
+//        attachViewModel()
+//        val params = PusherParams()
+//        params.latitude = lat
+//        params.longitude = long
+//        userViewModel.sendCoordinates(params)
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.googleMap) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -78,11 +77,11 @@ class DriverMapFragment : BaseFragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         var currentLatLng = LatLng(lat.toDouble(), long.toDouble())
-        mMap.addMarker(markerOptions.position(currentLatLng).title("Pakistan"))
-//        cameraPosition = CameraPosition.Builder()
-//            .target(currentLatLng)
-//            .zoom(17f).build()
-//        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+        mMap.addMarker(MarkerOptions().position(currentLatLng).title("Pakistan"))
+        val cameraPosition: CameraPosition = CameraPosition.Builder()
+            .target(currentLatLng)
+            .zoom(17f).build()
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
     }
 
     object Companion {
@@ -112,62 +111,62 @@ class DriverMapFragment : BaseFragment(), OnMapReadyCallback {
 //        })
 //    }
 
-    private fun setupPusher() {
-        val options = PusherOptions()
-        options.setCluster("ap2")
-        pusher = Pusher("8332aaa9ad861498c559", options)
+//    private fun setupPusher() {
+//        val options = PusherOptions()
+//        options.setCluster("ap2")
+//        pusher = Pusher("8332aaa9ad861498c559", options)
+//
+//        val channel = pusher.subscribe("my-channel")
+//
+//        channel.bind("new-values") { channelName, eventName, data ->
+//            val jsonObject = JSONObject(data)
+//            val lat: Double = jsonObject.getString("latitude").toDouble()
+//            val lon: Double = jsonObject.getString("longitude").toDouble()
+//
+//
+//            (activity as BaseActivity).runOnUiThread {
+//                val newLatLng = LatLng(lat, lon.toDouble())
+//                marker.position = newLatLng
+//                cameraPosition = CameraPosition.Builder()
+//                    .target(newLatLng)
+//                    .zoom(17f).build()
+//                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+//            }
+//        }
+//    }
 
-        val channel = pusher.subscribe("my-channel")
+//    private fun attachViewModel() {
+//        userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
+//
+//        with(userViewModel) {
+//            snackbarMessage.observe(viewLifecycleOwner, Observer {
+//                val msg = it?.getContentIfNotHandled()
+//                if (!msg.isNullOrEmpty()) showToast(msg)
+//            })
+//            progressBar.observe(viewLifecycleOwner, Observer {
+//                val show = it?.getContentIfNotHandled()
+//                if (show != null)
+//                    showProgressDialog(show)
+//            })
+//
+//
+//            sendCoordinatesResponse.observe(viewLifecycleOwner, Observer {
+//                val show = it?.getContentIfNotHandled()
+//                if (show != null) {
+//                    showToast(show.toString())
+//                    //  moveToGlobalNavigationActivity()
+//                }
+//            })
+//        }
+//    }
 
-        channel.bind("new-values") { channelName, eventName, data ->
-            val jsonObject = JSONObject(data)
-            val lat: Double = jsonObject.getString("latitude").toDouble()
-            val lon: Double = jsonObject.getString("longitude").toDouble()
+//    override fun onResume() {
+//        super.onResume()
+//        pusher.connect()
+//    }
 
-
-            (activity as BaseActivity).runOnUiThread {
-                val newLatLng = LatLng(lat, lon.toDouble())
-                marker.position = newLatLng
-                cameraPosition = CameraPosition.Builder()
-                    .target(newLatLng)
-                    .zoom(17f).build()
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
-            }
-        }
-    }
-
-    private fun attachViewModel() {
-        userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
-
-        with(userViewModel) {
-            snackbarMessage.observe(viewLifecycleOwner, Observer {
-                val msg = it?.getContentIfNotHandled()
-                if (!msg.isNullOrEmpty()) showToast(msg)
-            })
-            progressBar.observe(viewLifecycleOwner, Observer {
-                val show = it?.getContentIfNotHandled()
-                if (show != null)
-                    showProgressDialog(show)
-            })
-
-
-            sendCoordinatesResponse.observe(viewLifecycleOwner, Observer {
-                val show = it?.getContentIfNotHandled()
-                if (show != null) {
-                    showToast(show.toString())
-                    //  moveToGlobalNavigationActivity()
-                }
-            })
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        pusher.connect()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        pusher.disconnect()
-    }
+//    override fun onPause() {
+//        super.onPause()
+//        pusher.disconnect()
+//    }
 }

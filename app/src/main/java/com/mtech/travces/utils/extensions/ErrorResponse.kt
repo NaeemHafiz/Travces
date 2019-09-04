@@ -44,5 +44,7 @@ const val ERROR_CODE_INVALID_PHONE = -99
 const val ERROR_CODE_PICKUP_LOCATION_NAME = -109
 const val ERROR_CODE_DROP_LOCATION_NAME = -110
 
+const val ERROR_CODE_WRONG_NUMBER_FORMAT = -12
+
 
 class ErrorResponse(var errorMessage: String, var errorCode: Int) : Serializable

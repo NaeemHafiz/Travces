@@ -1,6 +1,7 @@
 package com.mtech.travces.viewModel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.mtech.travces.data.remote.base.ApiErrorResponse
 import com.mtech.travces.data.remote.travces.UserDataSource
@@ -23,25 +24,26 @@ class UserViewModel(context: Application) : BaseAndroidViewModel(context) {
     var getDriverListResponse: MutableLiveData<OneShotEvent<GetDriverResponse>> = MutableLiveData()
     var updateChildResponse: MutableLiveData<OneShotEvent<String>> = MutableLiveData()
     var sendCoordinatesResponse: MutableLiveData<OneShotEvent<String>> = MutableLiveData()
+    var regexStr: String = "^((\\+92)|(0092))-{0,1}\\d{3}-{0,1}\\d{7}\$|^\\d{11}\$|^\\d{4}-\\d{7}\$"
 
-    fun sendCoordinates(params: PusherParams) {
-        showProgressBar(true)
-        var canProceed = true
-        if (!canProceed) return
-        userRepository.sendCoordinates(params, object : UserDataSource.sendCoordinatesCallback {
-            override fun onsendCoodinatesResponse(message: String) {
-                showProgressBar(false)
-                sendCoordinatesResponse.value = OneShotEvent(message)
-            }
-
-            override fun onPayloadError(error: ApiErrorResponse) {
-                showProgressBar(false)
-                showSnackbarMessage(error.message)
-            }
-
-        })
-
-    }
+//    fun sendCoordinates(params: PusherParams) {
+//        showProgressBar(true)
+//        var canProceed = true
+//        if (!canProceed) return
+//        userRepository.sendCoordinates(params, object : UserDataSource.sendCoordinatesCallback {
+//            override fun onsendCoodinatesResponse(message: String) {
+//                showProgressBar(false)
+//                sendCoordinatesResponse.value = OneShotEvent(message)
+//            }
+//
+//            override fun onPayloadError(error: ApiErrorResponse) {
+//                showProgressBar(false)
+//                showSnackbarMessage(error.message)
+//            }
+//
+//        })
+//
+//    }
 
     fun updateChildProfile(params: UpdateChildParams) {
         showProgressBar(true)
@@ -240,6 +242,10 @@ class UserViewModel(context: Application) : BaseAndroidViewModel(context) {
             handleErrorType(ERROR_CODE_EMPTY_CONFIRM_PASSWORD, "Enter Password")
             canProceed = false
         }
+        if (phone.length < 10 || phone.length > 13 || phone.matches(regexStr.toRegex()) == false) {
+            handleErrorType(ERROR_CODE_WRONG_NUMBER_FORMAT, "Enter Correct Format")
+            canProceed = false
+        }
 
         if (!canProceed) return
         userRepository.login(phone, password, object : UserDataSource.LoginCallback {
@@ -254,6 +260,17 @@ class UserViewModel(context: Application) : BaseAndroidViewModel(context) {
             }
         })
     }
+
+//    fun maxOf(number: String): Boolean {
+//        var regexStr: String = "^((\\+92)|(0092))-{0,1}\\d{3}-{0,1}\\d{7}\$|^\\d{11}\$|^\\d{4}-\\d{7}\$"
+//
+//        {
+//
+//
+//        }
+//
+//
+//    }
 
     fun addChild(params: ChildParams) {
         showProgressBar(true)

@@ -22,9 +22,8 @@ class TravcesRetroFitClientInstance(ctx: Context) {
 
     // TODO : Replace this with app's original base url...
     private val PROD_BASE_URL = "http://172.104.217.178/travces/public/api/"
-    private val DEV_BASE_URL = "http://192.168.10.7:8080/travces/public/api/"
+    private val DEV_BASE_URL = "http://192.168.10.9:8080/travces/public/api/"
     private val BASE_URL = DEV_BASE_URL
-
     init {
         if (retrofit == null) {
             initRetrofit()
@@ -87,7 +86,6 @@ class TravcesRetroFitClientInstance(ctx: Context) {
         return retrofit
     }
 
-
     companion object {
         var singleInstance: TravcesRetroFitClientInstance? = null
 
@@ -95,7 +93,6 @@ class TravcesRetroFitClientInstance(ctx: Context) {
             if (singleInstance == null)
                 singleInstance =
                     TravcesRetroFitClientInstance(context)
-
             return singleInstance
         }
     }

@@ -83,8 +83,7 @@ class UserRepository(var context: Application) {
     fun updateProfile(
         userId: String,
         params: UpdateProfileParams,
-        callback: UserDataSource.UpdateProfileCallback
-    ) {
+        callback: UserDataSource.UpdateProfileCallback) {
         getApiService().updateProfile(
             userId,
             params.fname,
